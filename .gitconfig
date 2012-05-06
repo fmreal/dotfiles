@@ -1,0 +1,18 @@
+[user]
+  name = fmreal
+  email = fmreal@gmail.com
+
+[color]
+  ui = auto
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+
+[alias]
+  co = checkout
+  s = status
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+
