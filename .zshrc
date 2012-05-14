@@ -1,7 +1,12 @@
 export PATH=~/bin:/usr/local/bin:/opt/local/bin/:$PATH
 export CC=gcc-4.2
+autoload -U colors
+colors
 
-PS1="[@${HOST%%.*} %1~]%(!.#.$) "
+#source ~/.git-completion.sh
+#PS1='[%{$fg[green]%}% %n@%m %{$fg[cyan]%}% %c%{$fg[red]%}% $(__git_ps1 "(%s)")%{$fg[white]%}% ]\$ '
+PS1="[%{$fg[green]%}% %{$fg[cyan]%}% @${HOST%%.*} %{$fg[red]%}% %1~%{$fg[white]%}% ]%(!.#.$) "
+
 RPROMPT="%T"                      # 右側に時間を表示
 setopt transient_rprompt          # 右側まで入力がきたら時間を消す
 setopt prompt_subst               # 
@@ -42,6 +47,9 @@ alias grep=egrep
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# rbenv
+eval "$(rbenv init -)"
 
 #function pt() {
 #  echo "</pre>" >> ~/shell_history/output.txt

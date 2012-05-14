@@ -13,10 +13,26 @@ NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'sudo.vim'
+NeoBundle 'motemen/git-vim'
+"NeoBundle 'rails.vim'
+"NeoBundle 'YankRing.vim'
+"NeoBundle 'AutoClose'
+"NeoBundle 'thinca/vim-quickrun'
+"NeoBundle 'thinca/vim-ref'
+"NeoBundle 'motemen/git-vim'
 
 "-------------------------------------------------------------------------------
 " plugin
 "-------------------------------------------------------------------------------
+" neocomplcache
+let g:neocomplcache_enable_at_startup = 1
+"let g:neocomplcache_enable_smart_case = 1
+"let g:neocomplcache_enable_camel_case_completion = 0
+"let g:neocomplcache_enable_underbar_completion = 1
+"let g:neocomplcache_min_syntax_length = 3
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
 " nerdtree
 nnoremap <F6> :NERDTreeToggle<Enter>
 
@@ -46,7 +62,6 @@ syntax on
 " ターミナルでマウスを使用できるようにする
 set mouse=a
 set guioptions+=a
-
 set wildmenu               " コマンド補完を強化
 set wildchar=<tab>         " コマンド補完を開始するキー
 set wildmode=list:full     " リスト表示，最長マッチ
@@ -97,10 +112,8 @@ autocmd bufreadpost *
 "-------------------------------------------------------------------------------
 " indent
 "-------------------------------------------------------------------------------
-set autoindent   " 自動でインデント
-set paste        " ペースト時にautoindentを無効に
-"set smartindent  " 新しい行を開始したときに、新しい行のインデントを現在行と同じ量にする。
-
+" 自動でインデント
+set autoindent
 " softtabstopはtabキー押し下げ時の挿入される空白の量，0の場合はtabstopと同じ，bsにも影響する
 set tabstop=2 shiftwidth=2 softtabstop=0
 
@@ -130,7 +143,7 @@ set virtualedit+=block
 " ビジュアルモード時vで行末まで選択
 vnoremap v $h
 " 全選択
-noremap <c-a> ggvg
+noremap <c-a> ggvG
 
 "-------------------------------------------------------------------------------
 " encoding
@@ -153,5 +166,22 @@ set fileformats=unix,dos,mac
 if exists('&ambiwidth')
   set ambiwidth=double
 endif
+
+"-------------------------------------------------------------------------------
+" Mapping <jump-tag>
+"-------------------------------------------------------------------------------
+" コマンド       ノーマルモード 挿入モード コマンドラインモード ビジュアルモード
+" map/noremap           @            -              -                  @ 
+" nmap/nnoremap         @            -              -                  -
+" imap/inoremap         -            @              -                  - 
+" cmap/cnoremap         -            -              @                  -  
+" vmap/vnoremap         -            -              -                  @
+" map!/noremap!         -            @              @                  -
+"-------------------------------------------------------------------------------
+"画面切り替え
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+nnoremap <c-h> <c-w>h
 
 
